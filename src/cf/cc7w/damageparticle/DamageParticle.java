@@ -14,24 +14,31 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class DamageParticle extends JavaPlugin implements Listener{
+	
+	public static Boolean debug;
+	public static int count;
+	public static String def;
 
 	public void onEnable(){
 		getLogger().info("Damage Particle 插件已启用！");	
 		getServer().getPluginManager().registerEvents(this, this);
-		if(!getDataFolder().exists()) {
-			  getDataFolder().mkdir();
-			}
-		File file=new File(getDataFolder(),"config.yml");
-		if (!(file.exists())) {
-			saveDefaultConfig();
-			}
-		reloadConfig();
-
+		reload();
 	}
 	
 	public void onDisable(){
 		getLogger().info("Damage Particle 插件已关闭！");
 		HandlerList.unregisterAll();
+	}
+	
+	public void reload(){
+		if(!getDataFolder().exists()) {getDataFolder().mkdir();}
+		File file=new File(getDataFolder(),"config.yml");
+		if (!(file.exists())) {saveDefaultConfig();}
+		reloadConfig();
+		
+		debug = getConfig().getBoolean("setting.debug");
+		count = getConfig().getInt("setting.count");
+		def = getConfig().getString("setting.default");
 	}
 	
 	public boolean onCommand
@@ -45,7 +52,7 @@ public class DamageParticle extends JavaPlugin implements Listener{
 			return true;
 		}else{
 			if (args[0].equalsIgnoreCase("reload")){
-				reloadConfig();
+				reload();
 				sender.sendMessage("§c========== §e§lDamageParticle §c==========");
 				sender.sendMessage("§2· §e插件配置： §a配置已重载");
 				sender.sendMessage("§c========== §e§lDamageParticle §c==========");
@@ -71,34 +78,23 @@ public class DamageParticle extends JavaPlugin implements Listener{
 	@EventHandler
 	public void effect (EntityDamageEvent event){
 		
-		int count = getConfig().getInt("setting.count");
 		EntityType en = event.getEntityType();
 		String get = "particles."+en;
 		String part = getConfig().getString(get) ;
 		
-		
 		if (part == null){
-			
-			String def = getConfig().getString("setting.default") ;
 			
 			getLogger().info("实体类型" + en +"未定义！");
 			getLogger().info("已使用默认配置：" + def );
-
 			getConfig().set(get, def);
 			saveConfig();
 		}
-		
-		else if(part.equals("no")){
-			
-		}else{
-			
-		
-		
+		else if(part.equals("no")){}
+		else
+		{		
 		Particle par = Particle.valueOf(part);
-		
 		Location loc = event.getEntity().getLocation();
-		
-		if(getConfig().getBoolean("setting.debug") == true){
+		if(getConfig().getBoolean("debug") == true){
 			getLogger().info("************************************");
 			getLogger().info("您已进入debug模式，下面的文字请粘贴给作者");
 			getLogger().info("[Debug]"+String.valueOf(en));
@@ -109,11 +105,7 @@ public class DamageParticle extends JavaPlugin implements Listener{
 			getLogger().info("您已进入debug模式，上面的文字请粘贴给作者");
 			getLogger().info("************************************");
 		}
-		
-		
-
 		event.getEntity().getLocation().getWorld().spawnParticle(par, loc, count);
-		
 	    }
 	}
 }
