@@ -1,6 +1,7 @@
 package cf.cc7w.damageparticle;
 
 import java.io.File;
+import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -18,6 +19,7 @@ public class DamageParticle extends JavaPlugin implements Listener{
 	public static Boolean debug;
 	public static int count;
 	public static String def;
+	public static List<String> wlist;
 
 	public void onEnable(){
 		getLogger().info("Damage Particle 插件已启用！");	
@@ -39,6 +41,7 @@ public class DamageParticle extends JavaPlugin implements Listener{
 		debug = getConfig().getBoolean("setting.debug");
 		count = getConfig().getInt("setting.count");
 		def = getConfig().getString("setting.default");
+		wlist = getConfig().getStringList("enable-in-worlds");
 	}
 	
 	public boolean onCommand
@@ -59,7 +62,7 @@ public class DamageParticle extends JavaPlugin implements Listener{
 				return true;
 			}else if (args[0].equalsIgnoreCase("info")){
 				sender.sendMessage("§c========== §e§lDamageParticle §c==========");
-				sender.sendMessage("§2· §e插件版本： §a1.0（2017.06.26）");
+				sender.sendMessage("§2· §e插件版本： §a1.1（2017.06.29）");
 				sender.sendMessage("§2· §e插件作者： §ac7w");
 				sender.sendMessage("§c========== §e§lDamageParticle §c==========");
 				return true;
@@ -81,6 +84,14 @@ public class DamageParticle extends JavaPlugin implements Listener{
 		EntityType en = event.getEntityType();
 		String get = "particles."+en;
 		String part = getConfig().getString(get) ;
+		String w = event.getEntity().getWorld().getName();
+		
+		//getLogger().info(w);
+		//getLogger().info(String.valueOf(wlist));
+		
+		if (wlist.contains(w)){
+			
+		
 		
 		if (part == null){
 			
@@ -108,4 +119,5 @@ public class DamageParticle extends JavaPlugin implements Listener{
 		event.getEntity().getLocation().getWorld().spawnParticle(par, loc, count);
 	    }
 	}
+}
 }

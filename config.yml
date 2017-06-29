@@ -110,3 +110,8 @@ particles:
   ZOMBIE_HORSE: 'no'
   PIG_ZOMBIE: 'no'
   ZOMBIE_VILLAGER: 'no'
+enable-in-worlds:
+#设置在哪些世界启用本插件
+- 'world'
+- 'world_the_nether'
+- 'MoreWorldHere'
