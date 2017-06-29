@@ -1,0 +1,112 @@
+############################
+#   DamageParticle 插件    #
+#       Made By c7w        #
+############################
+#                          #
+#※可用的粒子效果※         #
+#  BARRIER                 #
+#  BLOCK_CRACK             #
+#  BLOCK_DUST              #
+#  CLOUD                   #
+#  CRIT                    #
+#  CRIT_MAGIC              #
+#  DAMAGE_INDICATOR        #
+#  DRAGON_BREATH           #
+#  DRIP_LAVA               #
+#  DRIP_WATER              #
+#  ENCHANTMENT_TABLE       #
+#  END_ROD                 #
+#  EXPLOSION_HUGE          #
+#  EXPLOSION_LARGE         #
+#  EXPLOSION_NORMAL        #
+#  FALLING_DUST            #
+#  FIREWORKS_SPARK         #
+#  FLAME                   #
+#  FOOTSTEP                #
+#  HEART                   #
+#  ITEM_CRACK              #
+#  ITEM_TAKE               #
+#  LAVA                    #
+#  MOB_APPEARANCE          #
+#  NOTE                    #
+#  PORTAL                  #
+#  REDSTONE                #
+#  SLIME                   #
+#  SMOKE_LARGE             #
+#  SMOKE_NORMAL            #
+#  SNOW_SHOVEL             #
+#  SNOWBALL                #
+#  SPELL                   #
+#  SPELL_INSTANT           #
+#  SPELL_MOB               #
+#  SPELL_MOB_AMBIENT       #
+#  SPELL_WITCH             #
+#  SPIT                    #
+#  SUSPENDED               #
+#  SUSPENDED_DEPTH         #
+#  SWEEP_ATTACK            #
+#  TOTEM                   #
+#  TOWN_AURA               #
+#  VILLAGER_ANGRY          #
+#  VILLAGER_HAPPY          #
+#  WATER_BUBBLE            #
+#  WATER_DROP              #
+#  WATER_SPLASH            #
+#  WATER_WAKE              #
+#  no → 没有效果           #
+############################
+setting:
+#全局设置
+  debug: false
+  #是否开启 DEBUG 模式
+  count: 50
+  #每次释放的颗粒数目
+  default: 'no'
+  #默认的颗粒效果
+particles:
+#设置每个生物不同的颗粒效果
+  SHEEP: 'no'
+  COW: 'no'
+  CREEPER: 'no'
+  ARMOR_STAND: 'no'
+  ENDER_CRYSTAL: 'no'
+  BAT: 'no'
+  BLAZE: 'no'
+  CAVE_SPIDER: 'no'
+  CHICKEN: 'no'
+  DONKEY: 'no'
+  ELDER_GUARDIAN: 'no'
+  ENDERMAN: 'no'
+  ENDERMITE: 'no'
+  EVOKER: 'no'
+  GHAST: 'no'
+  GUARDIAN: 'no'
+  HORSE: 'no'
+  HUSK: 'no'
+  LLAMA: 'no'
+  MAGMA_CUBE: 'no'
+  MUSHROOM_COW: 'no'
+  MULE: 'no'
+  OCELOT: 'no'
+  PARROT: 'no'
+  PIG: 'no'
+  POLAR_BEAR: 'no'
+  RABBIT: 'no'
+  SHULKER: 'no'
+  SILVERFISH: 'no'
+  SKELETON: 'no'
+  SKELETON_HORSE: 'no'
+  SLIME: 'no'
+  SPIDER: 'no'
+  SQUID: 'no'
+  STRAY: 'no'
+  VEX: 'no'
+  VILLAGER: 'VILLAGER_ANGRY'
+  VINDICATOR: 'no'
+  WITCH: 'no'
+  WITHER_SKELETON: 'no'
+  WOLF: 'no'
+  ZOMBIE: 'HEART'
+  ZOMBIE_HORSE: 'no'
+  PIG_ZOMBIE: 'no'
+  ZOMBIE_VILLAGER: 'no'

@@ -1,0 +1,10 @@
+name: DamageParticle
+main: cf.cc7w.damageparticle.DamageParticle
+version: 1.0
+commands:
+  dpart:
+    usage: '/dpart <info|reload>'
+    permission: dpart.admin
+permission:
+  dpart.admin:
+    default: op
